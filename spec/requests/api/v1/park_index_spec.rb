@@ -24,6 +24,7 @@ RSpec.describe 'Parks API - Endpoints', type: :request do
     expect(result[:attributes]).to be_a Hash
 
     info = parks[:data].first[:attributes]
+    # binding.pry
     expect(info).to have_key(:name)
     expect(info[:name]).to be_a(String)
     expect(info).to have_key(:code)
@@ -31,6 +32,6 @@ RSpec.describe 'Parks API - Endpoints', type: :request do
     expect(info).to have_key(:directions_url)
     expect(info[:directions_url]).to be_an(String)
     expect(info).to have_key(:hours)
-    expect(info[:hours]).to be_an(Hash)
+    expect(info[:hours]).to be (nil)
   end
 end
