@@ -5,6 +5,15 @@ class NationalParksService
         req.params['api_key'] = ENV['NPS_KEY']
         req.params['stateCode'] = state
       end
+      parse_data(response)
+    end
+
+    def campground_search(state, keyword)
+      response = conn.get("/api/v1/campgrounds?stateCode=#{state}&q=#{keyword}") do |req|
+        req.params['api_key'] = ENV['NPS_KEY']
+        req.params['stateCode'] = state
+        req.params['key'] = keyword
+      end
       # binding.pry
       parse_data(response)
     end
