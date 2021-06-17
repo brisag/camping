@@ -1,7 +1,5 @@
 class ParkSerializer
   include FastJsonapi::ObjectSerializer
   # set_id { nil }
-  attributes :name, :code, :description, :directions_url, :hours
-
-
+  attributes :name, :code, :lat_long, :address, :description, :directions_url, :hours
 end

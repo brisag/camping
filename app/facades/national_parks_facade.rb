@@ -19,14 +19,14 @@ end
 
 # binding.pry
 
-      # binding.pry
 # state_data = Search.find_by(state_code: state)
-# binding.pry
 # if state_data.nil?
-# parks = NationalParksService.state_search(state)
-# state_data = Search.new(state_code: state, parks_data: parks[:data])
-# state_data.save
+#   results = NationalParksService.state_search(state)
+#   state_data = Search.new(state_code: state, park_data: results[:data])
+#   state_data.save
 # end
-# binding.pry
-# state_data.parks_data.map do |park|
-#   Park.new(park.symbolize_keys)
+# state_data.park_data.map do |park|
+#   Park.new(state_data)
+# # results[:data].map do |park|
+#   Park.new(park)
+# end

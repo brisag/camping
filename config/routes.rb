@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       resources :parks, only: :index
       resources :forecast, only: :index
       resources :campground, only: :index
+      resources :users, only: :create
+      resources :sessions, only: :create
     end
   end
 end
