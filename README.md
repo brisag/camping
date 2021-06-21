@@ -106,7 +106,7 @@ In this project we used the following APIs:
   
 #### Test it Out In Postman
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/530ddbc284a5c76bf4a1?action=collection%2Fimport)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.postman.co/run-collection/15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9?action=collection%2Ffork&collection-url=entityId%3D15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9%26entityType%3Dcollection#?env%5BNew%20Environment%5D=W10=)
 </div>
 
 [back to top](#table-of-contents)
@@ -114,7 +114,7 @@ In this project we used the following APIs:
   
 ### Fork and Clone The Repo
 
-Fork this Github repository: [Ccamping](https://github.com/brisag/camping)
+Fork this Github repository: [Camping](https://github.com/brisag/camping)
 
 Clone your 'sweater_weather' repository using SSH:
 ```
@@ -228,8 +228,7 @@ Request:
 
 #### Test it Out In Postman
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/15385541/TzeXk7Zb)
-
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.postman.co/run-collection/15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9?action=collection%2Ffork&collection-url=entityId%3D15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9%26entityType%3Dcollection#?env%5BNew%20Environment%5D=W10=)
 </div>
 
 [back to top](#table-of-contents)
@@ -254,8 +253,7 @@ Request:
 
 #### Test it Out In Postman
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/530ddbc284a5c76bf4a1?action=collection%2Fimport)
-
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.postman.co/run-collection/15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9?action=collection%2Ffork&collection-url=entityId%3D15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9%26entityType%3Dcollection#?env%5BNew%20Environment%5D=W10=)
 </div>
 
 [back to top](#table-of-contents)
@@ -280,8 +278,7 @@ Request:
 
 #### Test it Out In Postman
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/530ddbc284a5c76bf4a1?action=collection%2Fimport)
-
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.postman.co/run-collection/15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9?action=collection%2Ffork&collection-url=entityId%3D15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9%26entityType%3Dcollection#?env%5BNew%20Environment%5D=W10=)
 </div>
   
   
@@ -317,8 +314,7 @@ The params are passed on in the body of the request not in the uri:
 
 #### Test it Out In Postman
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/530ddbc284a5c76bf4a1?action=collection%2Fimport)
-</div>
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.postman.co/run-collection/15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9?action=collection%2Ffork&collection-url=entityId%3D15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9%26entityType%3Dcollection#?env%5BNew%20Environment%5D=W10=)</div>
 
 ### User Login
 
@@ -345,8 +341,7 @@ Request:
 
 #### Test it Out In Postman
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/530ddbc284a5c76bf4a1?action=collection%2Fimport)
-</div>
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.postman.co/run-collection/15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9?action=collection%2Ffork&collection-url=entityId%3D15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9%26entityType%3Dcollection#?env%5BNew%20Environment%5D=W10=)</div>
 
 [back to top](#table-of-contents)
 
@@ -358,8 +353,7 @@ Request:
 
 #### Test it Out In Postman
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/530ddbc284a5c76bf4a1?action=collection%2Fimport)
-</div>
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.postman.co/run-collection/15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9?action=collection%2Ffork&collection-url=entityId%3D15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9%26entityType%3Dcollection#?env%5BNew%20Environment%5D=W10=)</div>
 
 [back to top](#table-of-contents)
 
@@ -369,8 +363,7 @@ Request:
 
 This api-application has been deployed to Heroku. You can test the endpoints in postman by following the link below and running postman in your browser.
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/92c3914f7cca906629f1)
-
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.postman.co/run-collection/15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9?action=collection%2Ffork&collection-url=entityId%3D15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9%26entityType%3Dcollection#?env%5BNew%20Environment%5D=W10=)
 If you have postman installed locally you can run it in the app directly
 
 `https://polar-coast-94103.herokuapp.com/<type here the desired endpoint>`
