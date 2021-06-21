@@ -103,7 +103,15 @@ In this project we used the following APIs:
 <hr>
 
 ## Installation
+  
+#### Test it Out In Postman
 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/530ddbc284a5c76bf4a1?action=collection%2Fimport)
+</div>
+
+[back to top](#table-of-contents)
+  
+  
 ### Fork and Clone The Repo
 
 Fork this Github repository: [Ccamping](https://github.com/brisag/camping)
@@ -179,11 +187,11 @@ The exposing these endpoints is the chief purpose of this application. To test t
 
 ### Expose the endpoints in **Postman**
 
-1. Open the terminal in your computer and navigate to where `sweater_weather` is located and `cd` into it.
+1. Open the terminal in your computer and navigate to where `camping` is located and `cd` into it.
 2. Once in the directory run the following command in your terminal:
     `$ rails server`
 3. Open **Postman** and type the following in the address bar:
-    `http://localhost:3000/`
+    'https://polar-coast-94103.herokuapp.com/' or `http://localhost:3000/`
 4. Add the requests below to call each endpoint.
     example: `http://localhost:3000/api/v1/backgrounds?location=denver,co`
 5. Change the verb to one corresponding to the call
