@@ -252,7 +252,32 @@ Request:
 
 [back to top](#table-of-contents)
 
-### User Registration
+### Park by State Code and Keyword
+
+#### Retrieves national park by state code and or keyword
+
+Using National Parks Service API, retrieves all state parks from specific state from that json.
+
+Request:
+- Content-Type: application/json
+- Accept: application/json
+
+<div align="center">
+
+**get**  `api/v1/campground?stateCode=CO&q=dinosaur`
+</div><br/>
+
+
+<div align="center">
+
+#### Test it Out In Postman
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/530ddbc284a5c76bf4a1?action=collection%2Fimport)
+
+</div>
+  
+  
+### FUTURE EXTENSIONS User Registration
 
 #### Registers a new user
 
@@ -317,25 +342,6 @@ Request:
 
 [back to top](#table-of-contents)
 
-### Road Trip
-
-#### Returns estimated travel time and arrival forecast for a road trip
-
-This request produces trip duration and destination weather forecast at eta.
-
-Request:
-- Content-Type: application/json
-- Accept: application/json
-
-```json
-{
-  "origin": "Denver,CO",
-  "destination": "Pueblo,CO",
-  "api_key": "jgn983hy48thw9begh98h4539h4"
-}
-```
-
-<div align="center">
 
 **post**  `/api/v1/campgrounds?stateCode=Colorado&q=dinosaur`
 
