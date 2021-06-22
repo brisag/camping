@@ -1,17 +1,17 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :validate_params
-
   def create
-    params = JSON.parse(request.body.read)
-    user = User.create!(params)
-    render json: UserSerializer.new(user), status: :created
+    user = User.new(user_params)
+
+    if user.save
+      render json: UserSerializer.new(user)
+    else
+      render json: user.errors, status: :bad_request
+    end
   end
 
   private
 
-  def validate_params
-    if request.body.read.blank?
-      render json: { error: "Must provide request body" }, status: :bad_request
-    end
+  def user_params
+    params.permit(:email, :password, :password_confirmation)
   end
 end
