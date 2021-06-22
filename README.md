@@ -105,6 +105,7 @@ In this project we used the following APIs:
 ## Installation
   
 #### Test it Out In Postman
+  It is as easy as clicking on the orange button, cloning to your web or local computer, and running the test suite!
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://god.postman.co/run-collection/15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9?action=collection%2Ffork&collection-url=entityId%3D15385541-564f8213-1bb7-4c66-b143-0ea1a5fac3d9%26entityType%3Dcollection#?env%5BNew%20Environment%5D=W10=)
 </div>
@@ -116,7 +117,7 @@ In this project we used the following APIs:
 
 Fork this Github repository: [Camping](https://github.com/brisag/camping)
 
-Clone your 'sweater_weather' repository using SSH:
+Clone your 'camping' repository using SSH:
 ```
   $ git clone git@github.com:<your-github-username>/camping.git
 ```
@@ -282,7 +283,7 @@ Request:
 </div>
   
   
-### FUTURE EXTENSIONS User Registration
+###  User Registration
 
 #### Registers a new user
 
