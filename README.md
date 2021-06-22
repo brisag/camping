@@ -194,7 +194,7 @@ The exposing these endpoints is the chief purpose of this application. To test t
 3. Open **Postman** and type the following in the address bar:
     'https://polar-coast-94103.herokuapp.com/' or `http://localhost:3000/`
 4. Add the requests below to call each endpoint.
-    example: `http://localhost:3000/api/v1/backgrounds?location=denver,co`
+    example: `http://localhost:3000/api/v1/parks?location=denver,co`
 5. Change the verb to one corresponding to the call
     for example: `Post`
 6. Send your request by clicking `Send`
