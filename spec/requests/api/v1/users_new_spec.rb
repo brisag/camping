@@ -1,136 +1,102 @@
 require 'rails_helper'
 
-RSpec.describe 'Users Request', type: :request do
-  it "can create a new user" do
-    user_params = {
-      "email": "test@test.com",
+RSpec.describe 'User Registration Endpoint', type: :request do
+  it 'can register a user', :vcr do
+    body = {
+      "email": "whatever@example.com",
       "password": "password",
       "password_confirmation": "password"
     }
 
-    headers = {"CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json"}
-    post "/api/v1/users", headers: headers, params: user_params.to_json
-    created_user = User.last
+    headers = {
+      'Content-Type' => 'application/json',
+      'Accept' => 'application/json'
+    }
+
+    post '/api/v1/users', headers: headers, params: body.to_json
 
     expect(response).to be_successful
 
-    expect(created_user.email).to eq(user_params[:email])
+    user = JSON.parse(response.body, symbolize_names: true)[:data]
 
-    expect(response.status).to eq(201)
+    expect(user).to have_key(:id)
+    expect(user[:id]).to be_a String
+    expect(user).to have_key(:type)
+    expect(user[:type]).to eq('user')
+    expect(user).to have_key(:attributes)
+    expect(user[:attributes]).to be_a(Hash)
+
+    attributes = user[:attributes]
+
+    expect(attributes).to have_key(:email)
+    expect(attributes[:email]).to be_a(String)
+    expect(attributes).to have_key(:api_key)
+    expect(attributes[:api_key]).to be_a(String)
+  end
+
+  it 'returns an error with duplicate users' do
+    body = {
+      "email": "whatever@example.com",
+      "password": "password",
+      "password_confirmation": "password"
+    }
+
+    headers = {
+      'Content-Type' => 'application/json',
+      'Accept' => 'application/json'
+    }
+
+    post '/api/v1/users', headers: headers, params: body.to_json
+    post '/api/v1/users', headers: headers, params: body.to_json
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+
     user = JSON.parse(response.body, symbolize_names: true)
-    expect(user).to have_key(:data)
-    expect(user[:data]).to be_a Hash
 
-    expect(user[:data]).to have_key(:type)
-    expect(user[:data][:type]).to eq("user")
-
-    expect(user[:data]).to have_key(:id)
-    expect(user[:data]).to have_key(:attributes)
-    expect(user[:data][:attributes]).to be_a Hash
-    user1 = user[:data][:attributes]
-    expect(user1.keys.count).to eq(2)
-    expect(user1).to have_key(:email)
-    expect(user1[:email]).to be_a String
-    expect(user1).to have_key(:api_key)
-    expect(user1[:api_key]).to be_a String
+    expect(user[:email]).to eq(["has already been taken"])
   end
 
-  it "Won't create a new user with a bad email" do
-    user_params = {
-      "email": "test@",
+  it 'retunrs error when passwords dont match' do
+    body = {
+      "email": "whatever@example.com",
       "password": "password",
-      "password_confirmation": "password"
-    }
-    headers = {"CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json"}
-    post "/api/v1/users", headers: headers, params: user_params.to_json
-
-    error = JSON.parse(response.body, symbolize_names:true)
-    error_message = "Validation failed: Email is invalid"
-
-    expect(response).to have_http_status(:bad_request)
-    expect(error).to have_key(:error)
-    expect(error[:error]).to eq("#{error_message}")
-  end
-
-  it "Won't create a new user with missing email" do
-    user_params = {
-      "password": "password",
-      "password_confirmation": "password"
-    }
-    headers = {"CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json"}
-    post "/api/v1/users", headers: headers, params: user_params.to_json
-
-    error = JSON.parse(response.body, symbolize_names:true)
-    error_message = "Validation failed: Email can't be blank, Email is invalid"
-
-    expect(response).to have_http_status(:bad_request)
-    expect(error).to have_key(:error)
-    expect(error[:error]).to eq("#{error_message}")
-  end
-
-  it "Won't create a new user with missing password" do
-    user_params = ({
-      "email": "whatever@example.com"
-    })
-
-    headers = {"CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json"}
-    post "/api/v1/users", headers: headers, params: user_params.to_json
-
-    error = JSON.parse(response.body, symbolize_names:true)
-    error_message = "Validation failed: Password can't be blank"
-
-    expect(response).to have_http_status(:bad_request)
-    expect(error).to have_key(:error)
-    expect(error[:error]).to eq("#{error_message}")
-  end
-
-  it "Won't create a new user with passwords that don't match" do
-    user_params = {
-      "email": "test@test.com",
-      "password": "password",
-      "password_confirmation": "password_confirmation"
+      "password_confirmation": "pasword"
     }
 
-    headers = {"CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json"}
-    post "/api/v1/users", headers: headers, params: user_params.to_json
+    headers = {
+      'Content-Type' => 'application/json',
+      'Accept' => 'application/json'
+    }
 
-    error = JSON.parse(response.body, symbolize_names:true)
-    error_message = "Validation failed: Password confirmation doesn't match Password"
+    post '/api/v1/users', headers: headers, params: body.to_json
 
-    expect(response).to have_http_status(:bad_request)
-    expect(error).to have_key(:error)
-    expect(error[:error]).to eq("#{error_message}")
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+
+    user = JSON.parse(response.body, symbolize_names: true)
+
+    expect(user[:password_confirmation]).to eq(["doesn't match Password"])
   end
 
-  it "Won't create a new user that already exists" do
-    user_params = {
-      "email": "test@test.com",
+  it 'can return an error with missing field' do
+    body = {
       "password": "password",
       "password_confirmation": "password"
     }
 
-    headers = {"CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json"}
-    post "/api/v1/users", headers: headers, params: user_params.to_json
+    headers = {
+      'Content-Type' => 'application/json',
+      'Accept' => 'application/json'
+    }
 
-    post "/api/v1/users", headers: headers, params: user_params.to_json
+    post '/api/v1/users', headers: headers, params: body.to_json
 
-    error = JSON.parse(response.body, symbolize_names:true)
-    error_message = "Validation failed: Email has already been taken"
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
 
-    expect(response).to have_http_status(:bad_request)
-    expect(error).to have_key(:error)
-    expect(error[:error]).to eq("#{error_message}")
-  end
+    user = JSON.parse(response.body, symbolize_names: true)
 
-  it "won't create a user with no request body" do
-      headers = {"CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json"}
-      post "/api/v1/users", headers: headers
-
-      error = JSON.parse(response.body, symbolize_names:true)
-      error_message = "Must provide request body"
-
-      expect(response).to have_http_status(400)
-      expect(error).to have_key(:error)
-      expect(error[:error]).to eq("#{error_message}")
+    expect(user[:email]).to eq(["can't be blank", "is invalid"])
   end
 end
