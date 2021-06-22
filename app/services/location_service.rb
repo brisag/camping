@@ -8,6 +8,18 @@ class LocationService
       parse_data(response)
     end
 
+    def get_duration(start, destination)
+      response = conn.get('directions/v2/route') do |req|
+        req.params['key'] = ENV['MAPQ_API_KEY']
+        req.params['from'] = start
+        req.params['to'] = destination
+      end
+      parse_data(response)
+    end
+
+    private
+
+
     def conn
       Faraday.new('http://www.mapquestapi.com')
     end
