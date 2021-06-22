@@ -1,22 +1,17 @@
 class Api::V1::SessionsController < ApplicationController
-  before_action :validate_params
-
   def create
-    params = JSON.parse(request.body.read, symbolize_names: :true)
-    user = User.find_by(email: params[:email])
+    user = User.find_by(email: user_params[:email])
 
-    if user && user.authenticate(params[:password])
+    if user.present? && user.authenticate(user_params[:password])
       render json: UserSerializer.new(user)
     else
-      render json: { error: "Credentials are bad" }, status: :bad_request
+      render json: { error: 'invalid credentials' }, status: :bad_request
     end
   end
 
   private
 
-  def validate_params
-    if request.body.read.blank?
-      render json: { error: "Must provide request body" }, status: :bad_request
-    end
+  def user_params
+    params.permit(:email, :password)
   end
 end

@@ -1,50 +1,38 @@
 require 'rails_helper'
 
-RSpec.describe 'Session Request', type: :request do
-  before :each do
-    user_params = {
-      "email": "test@test.com",
-      "password": "password",
-      "password_confirmation": "password"
+RSpec.describe 'User Login Endpoint', type: :request do
+  it 'can login a user' do
+    body = {
+      "email": "whatever@example.com",
+      "password": "password"
     }
 
-    headers = {"CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json"}
-    post "/api/v1/users", headers: headers, params: user_params.to_json
-  end
-
-  it "can create a new session" do
-    user_params = {
-      "email": "test@test.com",
-      "password": "password",
+    headers = {
+      'Content-Type' => 'application/json',
+      'Accept' => 'application/json'
     }
 
-    headers = {"CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json"}
-    post "/api/v1/sessions", headers: headers, params: user_params.to_json
-    created_user = User.last
+    User.create!(body)
+    post '/api/v1/sessions', headers: headers, params: body.to_json
 
     expect(response).to be_successful
 
-    expect(created_user.email).to eq(user_params[:email])
+    user = JSON.parse(response.body, symbolize_names: true)[:data]
 
-    expect(response.status).to eq(200)
-    user = JSON.parse(response.body, symbolize_names: true)
-    expect(user).to have_key(:data)
-    expect(user[:data]).to be_a Hash
+    expect(user).to have_key(:id)
+    expect(user[:id]).to be_a String
+    expect(user).to have_key(:type)
+    expect(user[:type]).to eq('user')
+    expect(user).to have_key(:attributes)
+    expect(user[:attributes]).to be_a(Hash)
 
-    expect(user[:data]).to have_key(:type)
-    expect(user[:data][:type]).to eq("user")
+    attributes = user[:attributes]
 
-    expect(user[:data]).to have_key(:id)
-    expect(user[:data]).to have_key(:attributes)
-    expect(user[:data][:attributes]).to be_a Hash
-    user1 = user[:data][:attributes]
-    expect(user1.keys.count).to eq(2)
-    expect(user1).to have_key(:email)
-    expect(user1[:email]).to be_a String
-    expect(user1).to have_key(:api_key)
-    expect(user1[:api_key]).to be_a String
+    expect(attributes).to have_key(:email)
+    expect(attributes[:email]).to be_a(String)
+    expect(attributes).to have_key(:api_key)
+    expect(attributes[:api_key]).to be_a(String)
   end
-
   it "Won't create a session with a bad email" do
     user_params = {
       "email": "test@",
@@ -54,7 +42,7 @@ RSpec.describe 'Session Request', type: :request do
     post "/api/v1/sessions", headers: headers, params: user_params.to_json
 
     error = JSON.parse(response.body, symbolize_names:true)
-    error_message = "Credentials are bad"
+    error_message = "invalid credentials"
 
     expect(response).to have_http_status(:bad_request)
     expect(error).to have_key(:error)
@@ -69,7 +57,7 @@ RSpec.describe 'Session Request', type: :request do
     post "/api/v1/sessions", headers: headers, params: user_params.to_json
 
     error = JSON.parse(response.body, symbolize_names:true)
-    error_message = "Credentials are bad"
+    error_message = "invalid credentials"
 
     expect(response).to have_http_status(:bad_request)
     expect(error).to have_key(:error)
@@ -85,7 +73,7 @@ RSpec.describe 'Session Request', type: :request do
     post "/api/v1/sessions", headers: headers, params: user_params.to_json
 
     error = JSON.parse(response.body, symbolize_names:true)
-    error_message = "Credentials are bad"
+    error_message = "invalid credentials"
 
     expect(response).to have_http_status(:bad_request)
     expect(error).to have_key(:error)
@@ -102,7 +90,7 @@ RSpec.describe 'Session Request', type: :request do
     post "/api/v1/sessions", headers: headers, params: user_params.to_json
 
     error = JSON.parse(response.body, symbolize_names:true)
-    error_message = "Credentials are bad"
+    error_message = "invalid credentials"
 
     expect(response).to have_http_status(:bad_request)
     expect(error).to have_key(:error)
@@ -110,14 +98,14 @@ RSpec.describe 'Session Request', type: :request do
   end
 
   it "won't create a new session with no request body" do
-      headers = {"CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json"}
-      post "/api/v1/sessions", headers: headers
+    headers = {"CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json"}
+    post "/api/v1/sessions", headers: headers
 
-      error = JSON.parse(response.body, symbolize_names:true)
-      error_message = "Must provide request body"
+    error = JSON.parse(response.body, symbolize_names:true)
+    error_message = "invalid credentials"
 
-      expect(response).to have_http_status(400)
-      expect(error).to have_key(:error)
-      expect(error[:error]).to eq("#{error_message}")
+    expect(response).to have_http_status(400)
+    expect(error).to have_key(:error)
+    expect(error[:error]).to eq("#{error_message}")
   end
 end
