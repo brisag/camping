@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :campground, only: :index
       resources :users, only: :create
       resources :sessions, only: :create
+      resources :camping_weather, only: :create 
     end
   end
 end
