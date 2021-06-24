@@ -223,9 +223,9 @@ Request:
 
 </div><br/>
   
-<img width="364" alt="daily_weather" src="https://user-images.githubusercontent.com/5049388/123216464-d047ba80-d486-11eb-8a80-f30866b6b430.png">
-
 <div align="center">
+  <img width="364" alt="daily_weather" src="https://user-images.githubusercontent.com/5049388/123216464-d047ba80-d486-11eb-8a80-f30866b6b430.png">
+
 
 #### Test it Out In Postman
   
@@ -348,18 +348,39 @@ Request:
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/530ddbc284a5c76bf4a1?action=collection%2Fimport)
   </div>
 
-[back to top](#table-of-contents)
+### Camping Weather Setup
 
+#### Returns estimated travel time and arrival forecast for a camping trip
 
-**post**  `/api/v1/campgrounds?stateCode=Colorado&q=sand dunes`
+This request produces trip duration and destination weather forecast at eta.
 
-  <img width="629" alt="weather_at_site" src="https://user-images.githubusercontent.com/5049388/123216509-da69b900-d486-11eb-8965-e8cfe81314ef.png">
+Request:
+- Content-Type: application/json
+- Accept: application/json
 
+```json
+{
+  "origin": "Denver,CO",
+  "destination": "sand dunes",
+  "api_key": "jgn983hy48thw9begh98h4539h4"
+}
+```
 
 <div align="center">
 
+**post**  `/api/v1/road_trip`
+
+</div><br/>
+<p align="center">
+  
+<img width="629" alt="weather_at_site" src="https://user-images.githubusercontent.com/5049388/123216509-da69b900-d486-11eb-8965-e8cfe81314ef.png">
+<div align="center">
+
 #### Test it Out In Postman
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/530ddbc284a5c76bf4a1?action=collection%2Fimport)</div>
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/39bdebc6f173b246f3cc)
+
+</div>
 
 [back to top](#table-of-contents)
 
@@ -369,10 +390,13 @@ Request:
 
 This api-application has been deployed to Heroku. You can test the endpoints in postman by following the link below and running postman in your browser.
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/530ddbc284a5c76bf4a1?action=collection%2Fimport)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/92c3914f7cca906629f1)
+
 If you have postman installed locally you can run it in the app directly
 
-`https://polar-coast-94103.herokuapp.com/<type here the desired endpoint>`
+`https://polar-coast-94103.herokuapp.com/api/v1/<type here the desired endpoint>`
 
+</div><br/>
+<p align="center">
 
 [back to top](#table-of-contents)
