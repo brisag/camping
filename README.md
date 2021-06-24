@@ -32,7 +32,7 @@
 
 Using request such as `GET /api/v1/forecast?location=denver,co` the app can
 
-- retrieve the weather for a city,
+- retrieve the weather for a national parks campsite,
 
 <br/>
 
@@ -222,7 +222,8 @@ Request:
 **get**  `api/v1/forecast?location=denver, co`
 
 </div><br/>
-
+  
+<img width="364" alt="daily_weather" src="https://user-images.githubusercontent.com/5049388/123216464-d047ba80-d486-11eb-8a80-f30866b6b430.png">
 
 <div align="center">
 
@@ -246,6 +247,8 @@ Request:
 
 **get**  `api/v1/parks?stateCode=CO`
 </div><br/>
+ 
+  <img width="605" alt="park_statecode" src="https://user-images.githubusercontent.com/5049388/123216402-bad29080-d486-11eb-8645-be8c9085e373.png">
 
 
 <div align="center">
@@ -270,7 +273,8 @@ Request:
 
 **get**  `api/v1/campground?stateCode=CO&q=dinosaur`
 </div><br/>
-
+  
+<img width="600" alt="camp_query" src="https://user-images.githubusercontent.com/5049388/123216480-d473d800-d486-11eb-9cc5-4ccc7d6eaec5.png">
 
 <div align="center">
 
@@ -305,6 +309,9 @@ The params are passed on in the body of the request not in the uri:
 
 **post**  `/api/v1/users`
 </div><br/>
+  
+  <img width="521" alt="user_create" src="https://user-images.githubusercontent.com/5049388/123216498-d76ec880-d486-11eb-8e00-1c4ddc0485be.png">
+
 
 [back to top](#table-of-contents)
 
@@ -344,7 +351,9 @@ Request:
 [back to top](#table-of-contents)
 
 
-**post**  `/api/v1/campgrounds?stateCode=Colorado&q=dinosaur`
+**post**  `/api/v1/campgrounds?stateCode=Colorado&q=sand dunes`
+
+  <img width="629" alt="weather_at_site" src="https://user-images.githubusercontent.com/5049388/123216509-da69b900-d486-11eb-8965-e8cfe81314ef.png">
 
 
 <div align="center">
