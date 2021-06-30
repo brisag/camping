@@ -13,6 +13,7 @@ RSpec.describe 'Parks API - Endpoints', type: :request do
     expect(parks[:data]).to be_an Array
 
     result = parks[:data].first
+    # binding.pry
     expect(result).to have_key(:id)
     expect(result[:id]).to be_a String
     expect(result).to have_key(:type)
