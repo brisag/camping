@@ -5,6 +5,7 @@ class NationalParksService
         req.params['api_key'] = ENV['NPS_KEY']
         req.params['stateCode'] = state
       end
+      # binding.pry
       parse_data(response)
     end
 
